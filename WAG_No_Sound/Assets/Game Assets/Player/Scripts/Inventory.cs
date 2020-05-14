@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Security.Policy;
 
 public class Inventory : MonoBehaviour
 {
@@ -59,6 +60,11 @@ public class Inventory : MonoBehaviour
     public AK.Wwise.Event InventoryOpenedSound;
     public AK.Wwise.Event InventoryClosedSound;
     public AK.Wwise.Event InventorySelectSound;
+
+    public AudioSource open;
+    public AudioSource close;
+    public AudioSource scroll;
+    public AudioSource select;
 
     #region private variables
     private bool hasShown = false;
@@ -710,6 +716,7 @@ public class Inventory : MonoBehaviour
     {
         if (!Menu.isOpen && DialogueManager.Instance.Dialogue.Count < 1 && !InventoryIsOut)
         {
+            open.Play();
             canvasGroup.interactable = true;
             InventoryOpenedSound.Post(gameObject);
             InventoryIsOut = true;
@@ -732,6 +739,7 @@ public class Inventory : MonoBehaviour
     {
         if (InventoryIsOut)
         {
+            close.Play();
             canvasGroup.interactable = false;
             InventoryClosedSound.Post(gameObject);
             InventoryIsOut = false;
@@ -808,6 +816,7 @@ public class Inventory : MonoBehaviour
                 SelectIncrementor_Row3++;
                 ApplyInventoryInfo2Single_Right(OriginalPositions.Row3, InventoryReference.Items, SelectIncrementor_Row3, Scales[2], ItemIcon);
             }
+            scroll.Play();
         }
     }
 
@@ -831,6 +840,7 @@ public class Inventory : MonoBehaviour
                 SelectIncrementor_Row3--;
                 ApplyInventoryInfo2Single_Left(OriginalPositions.Row3, InventoryReference.Items, SelectIncrementor_Row3, Scales[2], ItemIcon);
             }
+            scroll.Play();
         }
     }
 
