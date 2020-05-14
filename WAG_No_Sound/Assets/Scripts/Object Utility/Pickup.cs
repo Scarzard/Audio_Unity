@@ -44,9 +44,13 @@ public class Pickup : MonoBehaviour, IInteractable
 	public UnityEvent OnBecameFocus;
 	public UnityEvent OnInteraction;
 
+	GameObject pickup;
+
 	void Start()
 	{
 		randomOffset = Random.Range(0, 2 * Mathf.PI);
+		pickup = GameObject.Find("Pickup_Audio");
+
 	}
 
 	void OnEnable()
@@ -191,7 +195,7 @@ public class Pickup : MonoBehaviour, IInteractable
 
 			if (interactionSound)
 			{
-				
+				pickup.GetComponent<AudioSource>().Play();
 				PickUpEvent.Post(gameObject);
 			}
 			if (pickupParticles != null)

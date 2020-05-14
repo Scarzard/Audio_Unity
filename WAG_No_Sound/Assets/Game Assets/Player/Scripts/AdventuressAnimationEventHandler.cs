@@ -23,6 +23,7 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
 
     private PlayerFoot foot_L;
     private PlayerFoot foot_R;
+    public AudioSource footstep_sound;
 
     #region private variables
     private bool hasPausedMovement;
@@ -88,6 +89,7 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
                     if (foot_L.FootstepSound.Validate())
                     { 
                         foot_L.PlayFootstepSound();
+                        footstep_sound.Play();
                         particlePosition = foot_L.transform.position;
                         FootstepParticles(particlePosition);
                     }
@@ -97,6 +99,7 @@ public class AdventuressAnimationEventHandler : MonoBehaviour
                     if (foot_R.FootstepSound.Validate())
                     {
                         foot_R.PlayFootstepSound();
+                        footstep_sound.Play();
                         particlePosition = foot_R.transform.position;
                         FootstepParticles(particlePosition);
                     }

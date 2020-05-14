@@ -16,6 +16,11 @@ public class PlayerAttack : MonoBehaviour
     [ShowIf("showCooldownUI", true)]
     public Image attackUI;
 
+
+    public AudioSource attack1_sound;
+    public AudioSource attack2_sound;
+    public AudioSource attack3_sound;
+
     [HideInInspector]
     public List<GameObject> AttackPausers = new List<GameObject>();
 
@@ -129,6 +134,7 @@ public class PlayerAttack : MonoBehaviour
                     PlayerManager.Instance.playerAnimator.SetBool(hasHammerHash, false);
                     if (swingCount == 0)
                     {//first swing (left)
+                        attack1_sound.Play();
                         PlayerManager.Instance.playerAnimator.ResetTrigger(rightSwingHash);
                         PlayerManager.Instance.playerAnimator.SetTrigger(leftSwingHash);
                         PlayerManager.Instance.playerAnimator.ResetTrigger(topSwingHash);
@@ -139,6 +145,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         if (swingCount == PlayerManager.Instance.equippedWeaponInfo.maxComboHits - 1)
                         {//last swing (top)
+                            attack3_sound.Play();
                             PlayerManager.Instance.playerAnimator.SetTrigger(topSwingHash);
                             ResetSwingProgress();
                             StartCoroutine(comboCooldown());
@@ -148,6 +155,7 @@ public class PlayerAttack : MonoBehaviour
                         else
                         {//middle (right)
                             swingCount++;
+                            attack2_sound.Play();
                             PlayerManager.Instance.playerAnimator.ResetTrigger(leftSwingHash);
                             PlayerManager.Instance.playerAnimator.SetTrigger(rightSwingHash);
                             PlayerManager.Instance.playerAnimator.ResetTrigger(topSwingHash);

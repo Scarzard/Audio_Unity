@@ -17,6 +17,9 @@ public class DefaultSpellcraft : MonoBehaviour
         public float ChargeAmount = 0f;
     }
 
+    public AudioSource spellcharge_sound;
+    public AudioSource spellrelease_sound;
+
     [System.Serializable]
     public class ReleaseInfo
     {
@@ -95,6 +98,7 @@ public class DefaultSpellcraft : MonoBehaviour
             }
 
             // SPELL SOUND
+            spellcharge_sound.Play();
             SpellChargeStart.Post(gameObject);
             startRotation = transform.rotation;
         }
@@ -183,6 +187,7 @@ public class DefaultSpellcraft : MonoBehaviour
                     // SPELL SOUND
                     SpellChargeLevel.SetGlobalValue(Spellcraft[SpellSelect].Charge.ChargeAmount * 100);
                     SpellCast.Post(this.gameObject);
+                    spellrelease_sound.Play();
                 }
             }
         }
