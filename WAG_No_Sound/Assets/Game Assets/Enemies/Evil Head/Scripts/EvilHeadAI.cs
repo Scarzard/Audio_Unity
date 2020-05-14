@@ -23,6 +23,11 @@ public class EvilHeadAI : Creature
     public AK.Wwise.Event ChargeSound;
     public AK.Wwise.Event TelegraphSound;
 
+    public AudioSource charge;
+    public AudioSource bite;
+    public AudioSource hurt;
+    public AudioSource die;
+
     #region private variables
     private Vector3 targetLocation = Vector3.zero;
     private IEnumerator chargeRoutine;
@@ -66,6 +71,7 @@ public class EvilHeadAI : Creature
     {
         
         base.Anim_MeleeAttack();
+        bite.Play();
         SetMovementSpeed(100f);
     }
 
@@ -97,6 +103,7 @@ public class EvilHeadAI : Creature
         {
             StopCoroutine(chargeRoutine);
         }
+        charge.Play();
         chargeRoutine = ChargeTowardsPlayer(0.5f);
         StartCoroutine(chargeRoutine);
     }
@@ -135,6 +142,8 @@ public class EvilHeadAI : Creature
 
     public override void OnDeathAnimation()
     {
+        die.Play();
+
         base.OnDeathAnimation();
         isAlive = false;
 
@@ -153,6 +162,7 @@ public class EvilHeadAI : Creature
     /// </summary>
     public void StopCharge()
     {
+        hurt.Play();
         if (chargeRoutine != null)
         {
             StopCoroutine(chargeRoutine);
@@ -162,6 +172,7 @@ public class EvilHeadAI : Creature
 
     public void Explode()
     {
+        
         SetMovementSpeed(0f);
         //print(Time.realtimeSinceStartup + ": Explode");
         HoverSoundEnd.Post(this.gameObject);
