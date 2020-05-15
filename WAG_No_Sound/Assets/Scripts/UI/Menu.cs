@@ -27,6 +27,11 @@ public class Menu : MonoBehaviour
 
     public MenuEvent OnMenuDown;
 
+    public AudioSource open;
+    public AudioSource close;
+    public AudioSource over;
+    public AudioSource enter;
+
     private bool menuOpen = false;
 
     public void Update()
@@ -54,19 +59,21 @@ public class Menu : MonoBehaviour
             isOpen = menuOpen;
             if (menuOpen)
             {
+                open.Play();
                 MenuOpenSound.Post(gameObject);
-                MenuRTPC.SetGlobalValue(100f);
+                MenuRTPC.SetGlobalValue(100f); 
                 GameManager.Instance.gameSpeedHandler.PauseGameSpeed(gameObject.GetInstanceID());
                 GameManager.Instance.BlurCam();
 
                 QuestBox.EnableObject(0.5f);
 #if UNITY_STANDALONE
                 PlayerManager.Instance.cameraScript.FreezeAndShowCursor(true, gameObject);
-                ControlsBox.EnableObject(0.5f);
+                ControlsBox.EnableObject(0.5f); 
 #endif
             }
             else
             {
+                close.Play(); 
                 MenuCloseSound.Post(gameObject);
                 MenuRTPC.SetGlobalValue(0f);
                 GameManager.Instance.gameSpeedHandler.UnPauseGameSpeed(gameObject.GetInstanceID());
