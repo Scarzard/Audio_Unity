@@ -1,8 +1,8 @@
 # AudioUnityIntegration
 
-Made by JoanBarduena, VictorChen, MarcGarcia, JosepLleal
+## Made by Joan Barduena, Victor Chen, Marc Garcia, Josep Lleal
 
-## 1. Bring the silence in the Allegro Kingdom to an end by summoning the magic of music
+#### 1. Bring the silence in the Allegro Kingdom to an end by summoning the magic of music
 
 - [x] **Main goal**: Add background music to the Title Screen scene (WAG_TitleScreen_V1.wav)
 
@@ -23,7 +23,7 @@ Music_Forest_Mix.wav loop.
 
 - [ ] Secondary goal level GOD: alternate day and night music loops
 
-## 2. Bring Allegro Kingdom characters back to life: make their actions sound
+#### 2. Bring Allegro Kingdom characters back to life: make their actions sound
 
 - [x] **Main goal**: Add most main character sounds (footsteps, attack with selected weapon, casting
 spells and pick items) See AdventuressAnimationEventHandler.cs, Weapon.cs,
@@ -44,7 +44,7 @@ SoundMaterial.cs & PlayerManager.cs)
 speed
 
 
-## 3. Bring back Allegro’s magical ambiences
+#### 3. Bring back Allegro’s magical ambiences
 
 - [x] **Main goal**: Add ambience sound loops
 
@@ -56,7 +56,7 @@ waterfall.
 - [ ] Secondary goal level HERO/GOD: Add reverb zones where required (Cave, Dungeon, Library, Forge,
 Core)
 
-## 4. User is king! Bring back UI sounds
+#### 4. User is king! Bring back UI sounds
 
 - [x] **Main goal**: add inventory sounds (Inventory.cs)
 
@@ -64,7 +64,7 @@ Core)
 
 - [ ] **Main goal**: add quest evolution related sounds (QuestGiver.cs y QuestManager.cs)
 
-## 5. Achieve the final control over Allegro’s Kingdom
+#### 5. Achieve the final control over Allegro’s Kingdom
 
 - [x] **Main goal**: Create a mixer and add functionality to the music and general audio sliders in the
 options screen
